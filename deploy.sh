@@ -13,6 +13,8 @@ cd dist
 # echo 'www.example.com' > CNAME
 
 git init
+# pwd
+# git branch
 git checkout -b main
 git add -A
 git commit -m 'deploy'
@@ -24,3 +26,5 @@ git commit -m 'deploy'
 git push -f git@github.com:jcarnevale89/league-tracker.git main:gh-pages
 
 cd -
+
+rm -rf dist

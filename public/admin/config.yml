@@ -1,0 +1,57 @@
+backend:
+  name: github
+  repo: jcarnevale89/league-tracker
+  branch: master # Branch to update (optional; defaults to master)
+
+media_folder: 'public/uploads'
+
+collections:
+  - name: 'game'
+    extension: json
+    label: 'Games'
+    folder: 'public/data/games'
+    create: true
+    slug: '{{slug}}-{{month}}-{{day}}-{{year}}'
+    editor:
+      preview: false
+    fields:
+      - label: 'Title'
+        name: 'title'
+        widget: 'string'
+
+  - name: 'team'
+    extension: json
+    label: 'Teams'
+    folder: 'public/data/teams'
+    create: true
+    identifier_field: name
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - label: 'Name'
+        name: 'name'
+        widget: 'string'
+
+      - label: 'Players'
+        name: 'players'
+        widget: 'relation'
+        collection: 'player'
+        search_fields: ['name']
+        value_field: 'name'
+        display_field: ['name']
+        multiple: true
+
+  - name: 'player'
+    extension: json
+    label: 'Players'
+    folder: 'public/data/players'
+    create: true
+    identifier_field: name
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - label: 'Name'
+        name: 'name'
+        widget: 'string'

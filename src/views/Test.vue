@@ -1,15 +1,17 @@
 <template lang="pug">
 div test page
+router-link(to="/") home
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
 
 onMounted(async () => {
-  const response = await fetch('data/players/jake-carnevale.json')
+  const response = await fetch(`/data/players/jake-carnevale.json`)
 
   const data = await response.json()
 
   console.log(data)
+  console.log(import.meta.env.BASE_URL)
 })
 </script>

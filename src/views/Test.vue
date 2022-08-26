@@ -7,11 +7,10 @@ router-link(to="/") home
 import { onMounted } from 'vue'
 
 onMounted(async () => {
-  const response = await fetch(`/data/players/jake-carnevale.json`)
+  const response = await fetch(`${import.meta.env.BASE_URL}data/players/jake-carnevale.json`)
 
   const data = await response.json()
 
   console.log(data)
-  console.log(import.meta.env.BASE_URL)
 })
 </script>

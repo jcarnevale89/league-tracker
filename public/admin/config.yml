@@ -2,6 +2,8 @@ backend:
   name: github
   repo: jcarnevale89/league-tracker
   branch: master # Branch to update (optional; defaults to master)
+  # This is a random netlify app that we needed to configure for the app. I might just host this on netlify
+  site_domain: dynamic-choux-0c672c.netlify.app
 
 media_folder: 'public/uploads'
 

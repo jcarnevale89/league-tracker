@@ -1,0 +1,12 @@
+{
+  "testimonials": [
+    {
+      "quote": "Everything is awesome!",
+      "author": {
+        "name": "Emmet",
+        "avatar": "/img/emmet.jpg"
+      }
+    }
+  ],
+  "name": "test"
+}

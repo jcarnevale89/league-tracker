@@ -8,10 +8,70 @@ backend:
 media_folder: 'public/uploads'
 
 collections:
+  - label: 'Data'
+    name: 'data'
+    files:
+      - label: 'Leagues'
+        name: 'leagues'
+        file: 'src/data/leagues.json'
+        editor:
+          preview: false
+        fields:
+          - label: 'Leagues'
+            name: 'leagues'
+            widget: 'list'
+            fields:
+              - label: 'Name'
+                name: 'name'
+                widget: 'string'
+
+              - label: 'Players'
+                name: 'players'
+                widget: 'list'
+                summary: '{{fields.name}}'
+                fields:
+                  - label: 'Name'
+                    name: 'name'
+                    widget: 'string'
+
+              - label: 'Teams'
+                name: 'teams'
+                widget: 'list'
+                summary: '{{fields.name}}'
+                fields:
+                  - label: 'Name'
+                    name: 'name'
+                    widget: 'string'
+
+                  - label: 'Players'
+                    name: 'players'
+                    widget: 'relation'
+                    collection: 'data'
+                    file: 'leagues'
+                    multiple: true
+                    search_fields: ['leagues.*.players.*.name']
+                    display_fields: ['leagues.*.players.*.name']
+                    value_field: 'leagues.*.players.*.name'
+
+              - label: 'Games'
+                name: 'games'
+                widget: 'list'
+                summary: '{{fields.name}}' # game number - home team - away team - score
+                fields:
+                  - label: 'Players'
+                    name: 'players'
+                    widget: 'relation'
+                    collection: 'data'
+                    file: 'leagues'
+                    multiple: true
+                    search_fields: ['leagues.*.players.*.name']
+                    display_fields: ['leagues.*.players.*.name']
+                    value_field: 'leagues.*.players.*.name'
+
   - name: 'game'
     extension: json
     label: 'Games'
-    folder: 'public/data/games'
+    folder: 'src/data/games'
     create: true
     slug: '{{slug}}-{{month}}-{{day}}-{{year}}'
     editor:
@@ -24,7 +84,7 @@ collections:
   - name: 'team'
     extension: json
     label: 'Teams'
-    folder: 'public/data/teams'
+    folder: 'src/data/teams'
     create: true
     identifier_field: name
     slug: '{{slug}}'
@@ -47,7 +107,7 @@ collections:
   - name: 'player'
     extension: json
     label: 'Players'
-    folder: 'public/data/players'
+    folder: 'src/data/players'
     create: true
     identifier_field: name
     slug: '{{slug}}'

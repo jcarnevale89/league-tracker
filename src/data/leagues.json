@@ -1,0 +1,14 @@
+{
+  "leagues": [
+    {
+      "name": "New League",
+      "players": [
+        {
+          "name": "Jake Carnevale"
+        }
+      ],
+      "teams": [],
+      "games": []
+    }
+  ]
+}
